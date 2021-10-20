@@ -24,7 +24,7 @@
 
         # Incluir autoload
         include "../vendor/autoload.php";
-
+        $aux = 0;
         $listar = null;
         $directorio = opendir("C:\Users\SENA\Downloads");
         while ($elemento = readdir($directorio)) {
@@ -44,10 +44,11 @@
                 // echo $texto;
 
                 $cont = 0;
+                
+                
 
                 if (empty($texto)) {
-                    echo "no hay palabras";
-                    echo "</br>";
+                    $aux = $aux + 1;
                 } else {
                     $findme = "pedido";
                     $pos = stripos($texto, $findme);
@@ -56,6 +57,12 @@
                     } else {
                         echo "es una cuenta de cobro";
                         echo "</br>";
+                        $destino = "C:\Users\SENA\Documents\documentos/Cuentas de cobro/$elemento";
+                        copy($nombreDocumento,$destino) or die;
+                        unlink($nombreDocumento);
+                        echo "Archivo movido a la carpeta Cuentas de cobro";
+                        echo "</br>";
+
                         $cont = 1;
                     }
 
@@ -66,30 +73,41 @@
                     } else {
                         echo "Es una factura";
                         echo "</br>";
-                        $cont = 1;
-
-                    }
-
-                    $findme = "formal";
-                    $pos = stripos($texto, $findme);
-
-                    if ($pos === false) {
-                    } else {
-                        echo "Es una ingles";
+                        $destino = "C:\Users\SENA\Documents\documentos/Facturas/$elemento";
+                        copy($nombreDocumento,$destino) or die;
+                        unlink($nombreDocumento);
+                        echo "Archivo movido a la carpeta Facturas";
                         echo "</br>";
                         $cont = 1;
+
                     }
+
 
                     if($cont==0){
                         echo "Varios";
+                        $destino = "C:\Users\SENA\Documents\documentos/Varios/$elemento";
+                        copy($nombreDocumento,$destino) or die;
+                        unlink($nombreDocumento);
+                        echo "Archivo movido a la carpeta Varios";
+                        echo "</br>";
+                        
                         echo "</br>";
                     }
+
+                    
                 }
+                
             }
         }
+        echo "Hay $aux archivos que estan vacios";
 
         echo $listar;
 
+        $archivoActual = $_SERVER['PHP_SELF'];
+        header("refresh:10;url='$archivoActual'");
+        
+        
+        
 
 
 
@@ -109,12 +127,7 @@
                 <span class="navbar-brand mb-0 h1">Navbar</span>
             </div>
         </nav>-->
-        
-
-
-
-
-
+    
 
 </body>
 
