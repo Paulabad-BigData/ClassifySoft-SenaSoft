@@ -26,18 +26,18 @@
         include "../vendor/autoload.php";
         $aux = 0;
         $listar = null;
-        $directorio = opendir("C:\Users\SENA\Downloads");
+        $directorio = opendir("C:\Users\SENA\Documents/Email files");
         while ($elemento = readdir($directorio)) {
 
             if ($elemento != '.' && $elemento != '..' && substr($elemento, -4) == ".pdf") {
-                if (is_dir("C:\Users\SENA\Downloads" . $elemento)) {
-                    $listar .= "<li><a href='C:\Users\SENA\Downloads\$elemento target='_blank'>$elemento/</a></li>";
+                if (is_dir("C:\Users\SENA\Documents/Email files" . $elemento)) {
+                    $listar .= "<li><a href='C:\Users\SENA\Documents/Email files/$elemento target='_blank'>$elemento/</a></li>";
                 } else {
-                    $listar .= "<li><a href='C:\Users\SENA\Downloads\$elemento target='_blank'>$elemento</a></li>";
+                    $listar .= "<li><a href='C:\Users\SENA\Documents/Email files/$elemento target='_blank'>$elemento</a></li>";
                 }
 
                 $parseador = new \Smalot\PdfParser\Parser();
-                $nombreDocumento = "C:\Users\SENA\Downloads/$elemento";
+                $nombreDocumento = "C:\Users\SENA\Documents/Email files/$elemento";
                 $documento = $parseador->parseFile($nombreDocumento);
 
                 $texto = $documento->getText();
@@ -57,11 +57,13 @@
                     } else {
                         echo "es una cuenta de cobro";
                         echo "</br>";
-                        $destino = "C:\Users\SENA\Documents\documentos/Cuentas de cobro/$elemento";
+                        $destino = "C:\Users\SENA\Documents\Email files/Cuentas de cobro/$elemento";
                         copy($nombreDocumento,$destino) or die;
                         unlink($nombreDocumento);
                         echo "Archivo movido a la carpeta Cuentas de cobro";
                         echo "</br>";
+
+                    
 
                         $cont = 1;
                     }
@@ -73,7 +75,7 @@
                     } else {
                         echo "Es una factura";
                         echo "</br>";
-                        $destino = "C:\Users\SENA\Documents\documentos/Facturas/$elemento";
+                        $destino = "C:\Users\SENA\Documents\Email files/Facturas/$elemento";
                         copy($nombreDocumento,$destino) or die;
                         unlink($nombreDocumento);
                         echo "Archivo movido a la carpeta Facturas";
@@ -85,7 +87,7 @@
 
                     if($cont==0){
                         echo "Varios";
-                        $destino = "C:\Users\SENA\Documents\documentos/Varios/$elemento";
+                        $destino = "C:\Users\SENA\Documents\Email files/Varios/$elemento";
                         copy($nombreDocumento,$destino) or die;
                         unlink($nombreDocumento);
                         echo "Archivo movido a la carpeta Varios";
@@ -95,30 +97,20 @@
                     }
 
                     
+
+                    
                 }
                 
             }
         }
+        if($aux != 0){
         echo "Hay $aux archivos que estan vacios";
+        }
 
         echo $listar;
 
-        $archivoActual = $_SERVER['PHP_SELF'];
-        header("refresh:10;url='$archivoActual'");
         
         
-        
-
-
-
-
-
-
-
-        /*$document = "C:\Users\juanj\Documents\prueba\storage\content\prueba.txt";
-        $data = file_get_contents($document);
-
-        echo $data;*/
 
         ?>
 
