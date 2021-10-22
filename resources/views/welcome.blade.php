@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
@@ -16,7 +16,7 @@
     
     <nav class="navbar navbar-expand navbar-light" style= "background-color:#FF7913;" >
         <div class="nav navbar-nav">
-            <a class="nav-item nav-link active"><b>ClassifySoft</b>  </a>
+        <a class="nav-item nav-link active"><img src="{{asset('logo.png')}}" style="width:80px;height: 55px;"> </a>  
             <!--<a class="nav-item nav-link" href="#">Home</a>-->
         </div>
     </nav>
@@ -33,7 +33,7 @@
 
 # Import Library PDFParser
 include "../vendor/autoload.php";
-
+$cont2 = 0;
 $aux = 0;
 $listar = null;
 $directorio = opendir("C:\Users\SENA\Documents/Email files");
@@ -52,28 +52,29 @@ while ($elemento = readdir($directorio)) {
 
         $texto = $documento->getText();
         // echo $texto;
-        
+
         $cont = 0;
+        
 
         /*$contador = 0; # Un índice
         foreach ($imagenes as $imagen) {
         printf("<img with:400px; src=\"data:image/jpg;base64,%s\"/>", base64_encode($imagen->getContent()));*/
 
         if (empty($texto)) {
-            
+
             $parseador = new \Smalot\PdfParser\Parser();
             $nombreDocumento = "C:\Users\SENA\Documents/Email files/$elemento";
             $documento = $parseador->parseFile($nombreDocumento);
 
             $imagenes = $documento->getObjectsByType('XObject', 'Image');
 
-            if(empty($imagenes)){
+            if (empty($imagenes)) {
                 $aux = $aux + 1;
-            }else{
-                echo "es una Imagen";
+            } else {
                 $destino = "C:\Users\SENA\Documents\Email files/Imagenes/$elemento";
-                copy($nombreDocumento,$destino) or die;
+                copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
+                $cont2 = 1;
             }
 
         } else {
@@ -82,17 +83,13 @@ while ($elemento = readdir($directorio)) {
 
             if ($pos === false) {
             } else {
-                echo "es una cuenta de cobro";
-                echo "</br>";
-                $destino = "C:\Users\SENA\Documents\Email files/Cuentas de cobro/$elemento";
-                copy($nombreDocumento,$destino) or die;
-                unlink($nombreDocumento);
-                echo "Archivo movido a la carpeta Cuentas de cobro";
-                echo "</br>";
 
-            
+                $destino = "C:\Users\SENA\Documents\Email files/Cuentas de cobro/$elemento";
+                copy($nombreDocumento, $destino) or die;
+                unlink($nombreDocumento);
 
                 $cont = 1;
+                $cont2 = 1;
             }
 
             $findme = "referencia de pago";
@@ -100,14 +97,11 @@ while ($elemento = readdir($directorio)) {
 
             if ($pos === false) {
             } else {
-                echo "Es una factura";
-                echo "</br>";
                 $destino = "C:\Users\SENA\Documents\Email files/Facturas/$elemento";
-                copy($nombreDocumento,$destino) or die;
+                copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
-                echo "Archivo movido a la carpeta Facturas";
-                echo "</br>";
                 $cont = 1;
+                $cont2 = 1;
 
             }
 
@@ -116,49 +110,72 @@ while ($elemento = readdir($directorio)) {
 
             if ($pos === false) {
             } else {
-                echo "Es una Póliza";
-                echo "</br>";
+
                 $destino = "C:\Users\SENA\Documents\Email files/Polizas/$elemento";
-                copy($nombreDocumento,$destino) or die;
+                copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
-                echo "Archivo movido a la carpeta Polizas";
-                echo "</br>";
                 $cont = 1;
+                $cont2 = 1;
 
             }
 
+            if ($cont == 0) {
 
-            if($cont==0){
-                echo "Varios";
                 $destino = "C:\Users\SENA\Documents\Email files/Varios/$elemento";
-                copy($nombreDocumento,$destino) or die;
+                copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
-                echo "Archivo movido a la carpeta Varios";
-                echo "</br>";
-                
-                echo "</br>";
-            }   
+                $cont2 = 1;
+
+            }
         }
-        
+
     }
 }
 
-if($aux != 0){
-echo "Hay $aux archivos que estan vacios";
-}
-
-
 echo $listar;
 
+$palabra = "Archivos Organizados Con Exito";
+
 ?>
+
+
+
 
                         </div>
                     </div>
 
                 </div>
             </div>
-        </div> 
-    </div> 
+        </div>
+    </div>
+
+
+<?php if($cont2 == 1){?>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+      </symbol>
+      <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+      </symbol>
+      <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </symbol>
+    </svg>
+
+
+      <div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+          <use xlink:href="#check-circle-fill" />
+        </svg>
+        <?php echo $palabra; ?>
+      </div>
+
+
+      <?php
+}
+?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
