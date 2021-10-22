@@ -118,7 +118,7 @@ Tambíen se tiene proyectado la inclusión de Cloud que permita la recepción de
 _Aprendices Quinto Trimestre SENA-ADSI CDITI Dosquebradas Competencia SENASOFT 2021_
 
 * **Juan Jose Gomez Fernandez** - *Desarrollador Junior* - [juanj320](https://github.com/juanj320)
-* **Juan Guillermo Cardona Cifuentes** - *Desarrollador Junior* - [JuanGuiCardona](#https://github.com/JuanGuiCardona)
+* **Juan Guillermo Cardona Cifuentes** - *Desarrollador Junior* - [JuanGuiCardona](https://github.com/JuanGuiCardona)
 * **Paula Andrea Abad Tejada** - *Desarrollador Junior* - [Paulabad-BigData](https://github.com/Paulabad-BigData)
 
 ## Licencia 📄
