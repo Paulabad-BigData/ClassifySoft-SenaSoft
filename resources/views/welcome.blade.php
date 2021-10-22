@@ -31,12 +31,24 @@
 
     <?php
 
-# Import Library PDFParser
+
+/**
+ * # Import Library PDFParser.
+ * The general repository is established to receive documents from the local server 
+ * to the general repository.
+ */
+
 include "../vendor/autoload.php";
 $cont2 = 0;
 $aux = 0;
 $listar = null;
 $directorio = opendir("C:\Users\PERSONAL\Documents\Email files");
+
+/**
+ * While Loop receives PDF documents, views them and determines if they are text and image and 
+ * enters them into the appropriate function for further processing.
+ */
+
 while ($elemento = readdir($directorio)) {
 
     if ($elemento != '.' && $elemento != '..' && substr($elemento, -4) == ".pdf") {
@@ -45,6 +57,11 @@ while ($elemento = readdir($directorio)) {
         } else {
             $listar .= "<li><a href='C:\Users\PERSONAL\Documents\Email files/$elemento target='_blank'>$elemento</a></li>";
         }
+
+        /**
+         * Enter the first classification as text to iterate through the different conditions 
+         * such as: Invoice, ID, etc.
+         */
 
         $parseador = new \Smalot\PdfParser\Parser();
         $nombreDocumento = "C:\Users\PERSONAL\Documents\Email files/$elemento";
@@ -66,6 +83,10 @@ while ($elemento = readdir($directorio)) {
             $nombreDocumento = "C:\Users\PERSONAL\Documents\Email files/$elemento";
             $documento = $parseador->parseFile($nombreDocumento);
 
+            /**
+             * Enter the following condition of Images in PDF format to store in the 
+             * respective repository.
+             */
             $imagenes = $documento->getObjectsByType('XObject', 'Image');
 
             if (empty($imagenes)) {
@@ -76,6 +97,11 @@ while ($elemento = readdir($directorio)) {
                 unlink($nombreDocumento);
                 $cont2 = 1;
             }
+
+            /**
+             * Enter the Else condition of Text Documents to sort according to the parameters: 
+             * Invoice, Receivable Account, and
+             */
 
         } else {
             $findme = "cuenta de cobro";
