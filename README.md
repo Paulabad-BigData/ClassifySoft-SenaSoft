@@ -1,3 +1,5 @@
+![classifysoft](https://user-images.githubusercontent.com/77560847/138465591-1b235d49-efb5-432f-8368-777a0d451169.jpeg)
+
 # ClassifySoft version 1.0 Vertical 2 SENASOFT
 
 Presentación de la Aplicación Web y Plan de desarrollo de software fue desarrollado durante la competencia SENASOFT Octubre 2021.
@@ -34,11 +36,17 @@ Se expresan los casos de forma genérica.
 
 La aplicación web mediante un proceso automatizado recepcion los documentos PDF, clasifica y envía al respectivo repositorio en el servidor local.
 
+![caso](https://user-images.githubusercontent.com/77560847/138465645-83435eb0-95f9-4160-8144-a245b3db615a.jpeg)
+
+
 ### Diagrama de secuencia 🚀
 
 _Permitira una visión mas amplia del funcionamiento del sistema._
 
 La aplicación desde la recepción de cada documento va realizando el proceso de forma secuencial: Recepción, clasificación, organización y envío. en su flujo normal.
+
+![secuencia](https://user-images.githubusercontent.com/77560847/138465677-20d223a1-d616-491e-9ed8-6e29e034dbb5.png)
+
 
 ### Diseño de la arquitectura del sistema 📋
 
@@ -91,8 +99,12 @@ Para la elaboración HTML5 y Bootstrap 4.3.1, por la simplicidad de sus elemento
 
 * Pantalla de presentación: Una inerface simple, no tiene un menú solo el logo sobre un lienzo blanco donde se va desplegando los documentos PDF que ingresan. A continuación se presenta mockup:
 
+![interface](https://user-images.githubusercontent.com/77560847/138465751-482f1fe3-edd7-46ea-991f-4f70045e921b.jpeg)
+
+
 La interface de ClassifySoft:
 
+![interface](https://user-images.githubusercontent.com/77560847/138465833-bb6e9a69-402c-49ab-93fd-00f97a5f6b3e.png)
 
 
 
