@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ClassifySoft versión 1.0
 
 ClassifySoft Versión 1.0 Sistema de Clasificación de Documentos fue desarrollado durante la competencia SENASOFT Octubre 2021.
@@ -107,3 +108,7 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 
 ---
 ⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+=======
+# ClassifySoft-SenaSoft
+Challenge Vertical 2 
+>>>>>>> ba3defffab50b6f1f6ef82c44a5e7457691a5545
