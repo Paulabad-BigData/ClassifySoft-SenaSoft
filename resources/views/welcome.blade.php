@@ -36,18 +36,18 @@ include "../vendor/autoload.php";
 $cont2 = 0;
 $aux = 0;
 $listar = null;
-$directorio = opendir("C:\Users\SENA\Documents/Email files");
+$directorio = opendir("C:\Users\PERSONAL\Documents/Email files");
 while ($elemento = readdir($directorio)) {
 
     if ($elemento != '.' && $elemento != '..' && substr($elemento, -4) == ".pdf") {
         if (is_dir("C:\Users\SENA\Documents/Email files" . $elemento)) {
-            $listar .= "<li><a href='C:\Users\SENA\Documents/Email files/$elemento target='_blank'>$elemento/</a></li>";
+            $listar .= "<li><a href='C:\Users\PERSONAL\Documents/Email files/$elemento target='_blank'>$elemento/</a></li>";
         } else {
-            $listar .= "<li><a href='C:\Users\SENA\Documents/Email files/$elemento target='_blank'>$elemento</a></li>";
+            $listar .= "<li><a href='C:\Users\PERSONAL\Documents/Email files/$elemento target='_blank'>$elemento</a></li>";
         }
 
         $parseador = new \Smalot\PdfParser\Parser();
-        $nombreDocumento = "C:\Users\SENA\Documents/Email files/$elemento";
+        $nombreDocumento = "C:\Users\PERSONAL\Documents/Email files/$elemento";
         $documento = $parseador->parseFile($nombreDocumento);
 
         $texto = $documento->getText();
@@ -63,7 +63,7 @@ while ($elemento = readdir($directorio)) {
         if (empty($texto)) {
 
             $parseador = new \Smalot\PdfParser\Parser();
-            $nombreDocumento = "C:\Users\SENA\Documents/Email files/$elemento";
+            $nombreDocumento = "C:\Users\PERSONAL\Documents/Email files/$elemento";
             $documento = $parseador->parseFile($nombreDocumento);
 
             $imagenes = $documento->getObjectsByType('XObject', 'Image');
@@ -71,7 +71,7 @@ while ($elemento = readdir($directorio)) {
             if (empty($imagenes)) {
                 $aux = $aux + 1;
             } else {
-                $destino = "C:\Users\SENA\Documents\Email files/Imagenes/$elemento";
+                $destino = "C:\Users\PERSONAL\Documents\Email files/Imagenes/$elemento";
                 copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
                 $cont2 = 1;
@@ -84,7 +84,7 @@ while ($elemento = readdir($directorio)) {
             if ($pos === false) {
             } else {
 
-                $destino = "C:\Users\SENA\Documents\Email files/Cuentas de cobro/$elemento";
+                $destino = "C:\Users\PERSONAL\Documents\Email files/Cuentas de cobro/$elemento";
                 copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
 
@@ -97,7 +97,7 @@ while ($elemento = readdir($directorio)) {
 
             if ($pos === false) {
             } else {
-                $destino = "C:\Users\SENA\Documents\Email files/Facturas/$elemento";
+                $destino = "C:\Users\PERSONAL\Documents\Email files/Facturas/$elemento";
                 copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
                 $cont = 1;
@@ -111,7 +111,7 @@ while ($elemento = readdir($directorio)) {
             if ($pos === false) {
             } else {
 
-                $destino = "C:\Users\SENA\Documents\Email files/Polizas/$elemento";
+                $destino = "C:\Users\PERSONAL\Documents\Email files/Polizas/$elemento";
                 copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
                 $cont = 1;
@@ -121,7 +121,7 @@ while ($elemento = readdir($directorio)) {
 
             if ($cont == 0) {
 
-                $destino = "C:\Users\SENA\Documents\Email files/Varios/$elemento";
+                $destino = "C:\Users\PERSONAL\Documents\Email files/Varios/$elemento";
                 copy($nombreDocumento, $destino) or die;
                 unlink($nombreDocumento);
                 $cont2 = 1;
@@ -143,7 +143,6 @@ $palabra = "Archivos Organizados Con Exito";
 
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
