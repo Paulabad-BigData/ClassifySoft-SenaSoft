@@ -36,18 +36,18 @@ include "../vendor/autoload.php";
 $cont2 = 0;
 $aux = 0;
 $listar = null;
-$directorio = opendir("C:\Users\PERSONAL\Documents/Email files");
+$directorio = opendir("C:\Users\PERSONAL\Documents\Email files");
 while ($elemento = readdir($directorio)) {
 
     if ($elemento != '.' && $elemento != '..' && substr($elemento, -4) == ".pdf") {
-        if (is_dir("C:\Users\SENA\Documents/Email files" . $elemento)) {
-            $listar .= "<li><a href='C:\Users\PERSONAL\Documents/Email files/$elemento target='_blank'>$elemento/</a></li>";
+        if (is_dir("C:\Users\PERSONAL\Documents\Email files" . $elemento)) {
+            $listar .= "<li><a href='C:\Users\PERSONAL\Documents\Email files/$elemento target='_blank'>$elemento/</a></li>";
         } else {
-            $listar .= "<li><a href='C:\Users\PERSONAL\Documents/Email files/$elemento target='_blank'>$elemento</a></li>";
+            $listar .= "<li><a href='C:\Users\PERSONAL\Documents\Email files/$elemento target='_blank'>$elemento</a></li>";
         }
 
         $parseador = new \Smalot\PdfParser\Parser();
-        $nombreDocumento = "C:\Users\PERSONAL\Documents/Email files/$elemento";
+        $nombreDocumento = "C:\Users\PERSONAL\Documents\Email files/$elemento";
         $documento = $parseador->parseFile($nombreDocumento);
 
         $texto = $documento->getText();
@@ -63,7 +63,7 @@ while ($elemento = readdir($directorio)) {
         if (empty($texto)) {
 
             $parseador = new \Smalot\PdfParser\Parser();
-            $nombreDocumento = "C:\Users\PERSONAL\Documents/Email files/$elemento";
+            $nombreDocumento = "C:\Users\PERSONAL\Documents\Email files/$elemento";
             $documento = $parseador->parseFile($nombreDocumento);
 
             $imagenes = $documento->getObjectsByType('XObject', 'Image');
@@ -134,8 +134,6 @@ while ($elemento = readdir($directorio)) {
 
 echo $listar;
 
-$palabra = "Archivos Organizados Con Exito";
-
 ?>
 
 
@@ -149,7 +147,7 @@ $palabra = "Archivos Organizados Con Exito";
     </div>
 
 
-<?php if($cont2 == 1){?>
+    <?php if($cont2 == 1){?>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -163,18 +161,36 @@ $palabra = "Archivos Organizados Con Exito";
       </symbol>
     </svg>
 
-
-      <div class="alert alert-success d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+ 
+      <div class="container col-6  alert alert-success d-flex align-items-center" style="margin-top: 5%;" role="alert">
+        <svg class="bi flex-shrink-0 me-2 mr-2" width="24" height="24" role="img" aria-label="Success:">
           <use xlink:href="#check-circle-fill" />
         </svg>
-        <?php echo $palabra; ?>
+        <?php echo "Archivos Organizados Con Exito"; ?>
       </div>
+
+      
 
 
       <?php
 }
 ?>
+
+<?php if($cont2 == 0){?>
+    <div class=" container col-6 alert alert-warning d-flex align-items-center" style="margin-top: 5%;" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <?php echo "No hay archivos por mover"; ?>
+</div>
+
+<?php } ?> 
+
+<?php if($aux > 0){?>
+    <div class=" container col-6 alert alert-danger  d-flex align-items-center" style="margin-top: 5%;" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <?php echo "Hay $aux archivos sin contenido"; ?>
+</div>
+
+<?php } ?> 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

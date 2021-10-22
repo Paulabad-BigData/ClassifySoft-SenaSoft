@@ -16,7 +16,7 @@ Durante el desarrollo del Plan de desarrollo de software, se encontraron factore
 
 La audiencia prevista para el mismo, por tanto, tiene un marcado perfil técnico.
 
-* Responsables: como herramienta de seguimiento y para control del proceso de desa-rrollo.
+* Responsables: como herramienta de seguimiento y para control del proceso de desarrollo.
 * Desarrolladores: como guía de actividades.
 
 ### Resumen del proceso del sistema 🚀
@@ -28,13 +28,15 @@ Se realizó el proceso de modelado del sistema de información, a través de los
 Una descripción de las actividades que deberán realizarse para llevar a cabo el proceso.
 
 * Actores: 
+
 Cloud o servidor local envía y recibe los documentos.
+
 Aplicación recibe los documentos y los procesa.
 
 * Casos de uso:
 Se expresan los casos de forma genérica.
 
-La aplicación web mediante un proceso automatizado recepcion los documentos PDF, clasifica y envía al respectivo repositorio en el servidor local.
+La aplicación web mediante un proceso automatizado recepciona los documentos PDF, clasifica y envía al respectivo repositorio en el servidor local.
 
 ![caso](https://user-images.githubusercontent.com/77560847/138465645-83435eb0-95f9-4160-8144-a245b3db615a.jpeg)
 
@@ -62,7 +64,7 @@ Todo desarrollado sobre una plataforma de Windosws pero puede ser instalado en U
 
 ### Interfaces del sistema 🔧
 
-_Back-end_ 🛠️
+_**Back-end**_ 🛠️
 
 Interface diseñada con una sola pantalla la que activa el proceso en el momento de abrir la aplicación.
 
@@ -93,7 +95,7 @@ while ($elemento = readdir($directorio)) {
         }
 ```
 
-_Front-end_ ⌨️
+_**Front-end**_ ⌨️
 
 Para la elaboración HTML5 y Bootstrap 4.3.1, por la simplicidad de sus elementos, basados en un formato de bloques de color planos, sin simulación de relieve. Básicamente se agrupa en un solo bloque.
 
