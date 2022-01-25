@@ -127,12 +127,10 @@ Como plan de mejor se esta implementando el desarrollo de redes neuronales que p
 Tambíen se tiene proyectado la inclusión de Cloud que permita la recepción de documentos y el envío clasificado según el repostorio de la empresa. Para que se tenga acceso tanto de la aplicación como de los documentos desde cualquier parte del mundo.
 
 
-## Autores ✒️
+## Autor ✒️
 
-_Aprendices Quinto Trimestre SENA-ADSI CDITI Dosquebradas Competencia SENASOFT 2021_
+_Aprendiz Quinto Trimestre SENA-ADSI CDITI Dosquebradas Competencia SENASOFT 2021_
 
-* **Juan Jose Gomez Fernandez** - *Desarrollador Junior* - [juanj320](https://github.com/juanj320)
-* **Juan Guillermo Cardona Cifuentes** - *Desarrollador Junior* - [JuanGuiCardona](https://github.com/JuanGuiCardona)
 * **Paula Andrea Abad Tejada** - *Desarrollador Junior* - [Paulabad-BigData](https://github.com/Paulabad-BigData)
 
 ## Licencia 📄
