@@ -133,6 +133,8 @@ _Aprendiz Quinto Trimestre SENA-ADSI CDITI Dosquebradas Competencia SENASOFT 202
 
 * **Paula Andrea Abad Tejada** - *Desarrollador Junior* - [Paulabad-BigData](https://github.com/Paulabad-BigData)
 
+* **Juan Jose Gomez** - *Desarrollador Junior* - [juanj320](https://github.com/juanj320)
+
 ## Licencia 📄
 
 Este proyecto se desarrollo bajo la competencia SENASOFT 2021 y los derechos de propiedad son reservados.
